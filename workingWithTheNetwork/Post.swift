@@ -13,7 +13,7 @@ struct Posts: Codable {
     let postId: Int
     let title:  String
     let body:   String
-    enum CodingKeys: String, CodingKey { // тут перечисляем все наши поля кейсами
+    enum CodingKeys: String, CodingKey {
         case userId
         case postId = "id"
         case title
