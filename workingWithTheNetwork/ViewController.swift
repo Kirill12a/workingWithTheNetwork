@@ -7,13 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     var dataSource = [Posts]()
     let networkManager = NetworkManager()
     
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         networkManager.obtainPost { (posts) in
             self.dataSource = posts
             DispatchQueue.main.async {
@@ -37,6 +38,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.transform = CGAffineTransform(scaleX: 0.8, y: 0.8)
+        UIView.animate(withDuration: 0.9) {
+            cell.transform = CGAffineTransform.identity
+        }
+    }
+    
     
 }
 

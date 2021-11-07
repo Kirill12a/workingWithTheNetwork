@@ -23,7 +23,7 @@ class NetworkManager{
                 failrureComletion(error?.localizedDescription as! Error)
                 return}
             if error == nil {
-                
+    
                 guard  let posts = try? decoder.decode([Posts].self, from: data) else {
                     failrureComletion(error?.localizedDescription as! Error)
                     return}
